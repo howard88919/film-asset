@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>FILM ASSET MAX 6.9</title>
+    <meta name="theme-color" content="#121212">
+    <title>FILM ASSET MAX</title>
+    
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzEyMTIxMiIvPjxyZWN0IHg9IjE1NiIgeT0iODAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMzUyIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMzIiIHJ4PSIzMiIvPjxwYXRoIGQ9Ik0xNTYgMTYwIEgzNTYiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzMiIvPjxwYXRoIGQ9Ik0xNTYgMzUyIEgzNTYiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzMiIvPjxyZWN0IHg9IjIyNCIgeT0iODAiIHdpZHRoPSI2NCIgaGVpZ2h0PSI4MCIgZmlsbD0iI0QzNTQwMCIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyNCIvPjwvc3ZnPg==">
+
     <style>
         :root {
             --bg-color: #f7f7f5; --card-bg: #ffffff; --text-main: #2d2d2d; --text-sub: #767676;
@@ -29,18 +34,19 @@
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             background-color: var(--bg-color); color: var(--text-main); margin: 0; 
-            padding: env(safe-area-inset-top) 15px calc(40px + env(safe-area-inset-bottom)); 
+            padding: env(safe-area-inset-top) 15px calc(110px + env(safe-area-inset-bottom)); 
             line-height: 1.5; transition: background-color 0.3s ease, color 0.3s ease; 
         }
         
         .header-container { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 30px; }
         h2 { margin: 0; font-weight: 800; font-size: 24px; letter-spacing: 1px; color: var(--text-main); }
-        .theme-toggle { background: var(--card-bg); border: 1px solid var(--border-light); border-radius: 50%; width: 44px; height: 44px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-main); transition: 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.05); -webkit-tap-highlight-color: transparent; flex-shrink: 0; }
+        .theme-toggle { background: var(--card-bg); border: 1px solid var(--border-light); border-radius: 50%; height: 44px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-main); transition: 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.05); -webkit-tap-highlight-color: transparent; flex-shrink: 0; }
+        .btn-gear-room { width: auto; padding: 0 16px; border-radius: 22px; font-size: 15px; font-weight: 700; margin-right: 10px; }
+        .btn-round { width: 44px; border-radius: 50%; }
         
         .section-title { font-size: 14px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1.5px; margin: 35px 0 15px 5px; display: flex; justify-content: space-between; align-items: center; }
 
         .card { background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid var(--border-light); margin-bottom: 20px; transition: all 0.3s ease; }
-        .edit-mode { border: 2px solid var(--accent); box-shadow: 0 8px 24px rgba(211, 84, 0, 0.1); }
         .fridge-card { border: 1px dashed var(--border-light); }
 
         label { display: block; margin-top: 16px; font-weight: 600; font-size: 13px; color: var(--text-main); margin-bottom: 6px; }
@@ -62,7 +68,6 @@
         
         .btn-main { width: 100%; padding: 16px; background-color: var(--text-main); color: var(--bg-color); border: none; border-radius: 14px; font-size: 16px; font-weight: 700; margin-top: 25px; cursor: pointer; letter-spacing: 0.5px; }
         .btn-main.update-btn { background-color: var(--accent); color: white; }
-        .btn-cancel { width: 100%; padding: 14px; background-color: transparent; color: var(--text-sub); border: 1px solid var(--border-light); border-radius: 14px; font-size: 15px; font-weight: 600; margin-top: 12px; cursor: pointer; display: none; }
         .btn-export { width: 100%; padding: 16px; background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--border-light); border-radius: 14px; font-size: 15px; font-weight: 700; margin-top: 15px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
         
         .record-item { background: var(--card-bg); padding: 20px; border-radius: 16px; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid var(--border-light); position: relative; overflow: hidden; }
@@ -71,15 +76,15 @@
         .record-item p { margin: 6px 0; font-size: 14px; color: var(--text-sub); }
         .record-cost { color: var(--accent); font-weight: 700; font-family: monospace; font-size: 15px; }
         
-        .fridge-item { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 12px 16px; border-radius: 12px; margin-bottom: 10px; font-size: 15px; border: 1px solid var(--border-light); }
-        .stat-item { background: var(--card-bg); padding: 16px; border-radius: 16px; margin-bottom: 12px; border: 1px solid var(--border-light); border-left: 4px solid var(--badge-lab-txt); }
-        .stat-item h4 { margin: 0 0 8px 0; color: var(--text-main); font-size: 16px; }
-
+        .fridge-item { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 12px 16px; border-radius: 12px; margin-bottom: 10px; font-size: 15px; border: 1px solid var(--border-light); gap: 10px;}
+        
         .status-badge { display: inline-block; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
         .status-shooting { background: var(--badge-shoot-bg); color: var(--badge-shoot-txt); }
         .status-unloaded { background: var(--badge-unload-bg); color: var(--badge-unload-txt); }
         .status-lab { background: var(--badge-lab-bg); color: var(--badge-lab-txt); }
         .status-done { background: var(--badge-done-bg); color: var(--badge-done-txt); }
+        .push-badge { background: #ffebee; color: #d32f2f; }
+        :root[data-theme="dark"] .push-badge { background: #4a1515; color: #ff8a80; }
 
         .btn-quick-action { width: 100%; padding: 12px; background-color: transparent; color: var(--text-main); border: 1px dashed var(--border-light); border-radius: 12px; font-size: 14px; font-weight: 600; margin-top: 15px; cursor: pointer; }
         .action-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 15px; border-top: 1px solid var(--border-light); }
@@ -93,13 +98,102 @@
         .flex-row > div { flex: 1; min-width: 120px; }
         .hidden-group { display: none; padding: 15px; background: var(--box-inner-bg); border-radius: 14px; margin-top: 15px; border: 1px solid var(--border-light); }
         .inner-box { margin-top:8px; padding:10px; background:var(--box-inner-bg); border-radius:8px; border: 1px solid var(--border-light); }
+
+        /* 戰情儀表板 CSS */
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+        .dash-card { background: var(--card-bg); padding: 16px; border-radius: 16px; border: 1px solid var(--border-light); display: flex; flex-direction: column; justify-content: center; }
+        .dash-card.full-width { grid-column: 1 / -1; }
+        .dash-card h4 { margin: 0 0 8px 0; font-size: 13px; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px; }
+        .dash-card .value { font-size: 26px; font-weight: 800; color: var(--text-main); margin: 0; line-height: 1.2; }
+        .dash-card .value.accent { color: var(--accent); }
+        .dash-list { text-align: left; margin-top: 6px; font-size: 14px; }
+        .dash-list .list-row { display: flex; justify-content: space-between; margin-bottom: 6px; border-bottom: 1px dashed var(--border-light); padding-bottom: 4px;}
+        .dash-list .list-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        /* -------------------------------------
+           懸浮按鈕 FAB - 徠卡紅快門與底片 SVG 
+           ------------------------------------- */
+        .fab {
+            position: fixed; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom));
+            display: flex; align-items: center; justify-content: center;
+            width: 72px; height: 72px; border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ff5252, #d32f2f 70%, #9a0000);
+            border: 4px solid #e8e8e8;
+            box-shadow: 
+                0 12px 24px rgba(0,0,0,0.15), 
+                inset 0 4px 6px rgba(255,255,255,0.4), 
+                inset 0 -4px 6px rgba(0,0,0,0.2), 
+                0 0 0 1px #bdbdbd;
+            cursor: pointer;
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s;
+            z-index: 100;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .fab::before {
+            content: ''; position: absolute; width: 52px; height: 52px; border-radius: 50%;
+            background: repeating-radial-gradient(circle, transparent, transparent 2px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px);
+            z-index: 1;
+        }
+
+        .fab:active { 
+            transform: scale(0.92);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 8px 16px rgba(0,0,0,0.5), 0 0 0 1px #a0a0a0;
+        }
+
+        .fab svg {
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 -1px 1px rgba(0,0,0,0.4));
+        }
+
+        /* Modal 彈出視窗 */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+            z-index: 200; display: none; justify-content: center; align-items: flex-end;
+            padding-bottom: env(safe-area-inset-bottom);
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.show { opacity: 1; display: flex; }
+        
+        .modal-content {
+            background: var(--bg-color); width: 100%; max-height: 90vh;
+            border-radius: 24px 24px 0 0; padding: 25px 20px 40px; overflow-y: auto;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+            transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+        .modal-overlay.show .modal-content { transform: translateY(0); }
+        
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .modal-header h3 { margin: 0; font-size: 20px; }
+        .btn-close { background: var(--input-bg); color: var(--text-main); border: none; width: 36px; height: 36px; border-radius: 18px; font-size: 16px; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+
+        .search-bar { background: var(--input-bg); display: flex; align-items: center; border-radius: 12px; padding: 0 12px; margin-bottom: 15px; border: 1px solid var(--border-light); }
+        .search-bar input { border: none; padding: 14px 8px; background: transparent; width: 100%; outline: none; }
+
+        /* 器材室專用樣式 */
+        .gear-tabs { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
+        .gear-tabs button { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--border-light); background: var(--input-bg); color: var(--text-main); font-weight: 600; white-space: nowrap; cursor: pointer; }
+        .gear-tabs button.active { background: var(--text-main); color: var(--bg-color); border-color: var(--text-main); }
+        .gear-list { display: flex; flex-direction: column; gap: 10px; max-height: 50vh; overflow-y: auto; }
+        .gear-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--box-inner-bg); border-radius: 12px; border: 1px solid var(--border-light); }
+        .gear-item span { font-weight: 600; font-size: 15px; display: block; }
+        .gear-item-meta { font-size: 12px; color: var(--text-sub); display: block; margin-top: 4px; font-weight: normal; }
+        .gear-actions { display: flex; gap: 8px; }
+        .gear-actions button { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; }
+        .btn-gear-edit { background: var(--badge-shoot-bg); color: var(--text-main); }
+        .btn-gear-del { background: var(--badge-unload-bg); color: var(--badge-unload-txt); }
     </style>
 </head>
 <body>
 
     <div class="header-container">
         <h2>🎞️ FILM ASSET</h2>
-        <button class="theme-toggle" id="themeBtn">🌗</button>
+        <div style="display: flex;">
+            <button class="theme-toggle btn-gear-room" onclick="openGearRoom('camera')">⚙️ 器材室</button>
+            <button class="theme-toggle btn-round" id="themeBtn">🌗</button>
+        </div>
     </div>
 
     <div class="section-title">
@@ -108,133 +202,38 @@
     </div>
     <div class="card fridge-card" id="fridgeArea" style="display: none;">
         <div class="input-group">
-            <input type="text" id="invFilmName" placeholder="底片名稱 (如: Portra 400)">
+            <select id="invFilmSelect"></select>
             <input type="number" id="invQty" placeholder="數量" style="width: 70px; flex: none;">
+            <input type="number" id="invCost" placeholder="單價$" style="width: 80px; flex: none;">
         </div>
-        <div class="input-group" style="margin-top: 10px;">
-            <input type="date" id="invDate">
-            <button type="button" class="btn-inline" onclick="toggleUnknownDate('invDate')">不可考</button>
-            <button class="btn-add" onclick="addInventory()">➕ 存入</button>
+        
+        <div class="flex-row" style="margin-top: 10px;">
+            <div>
+                <label style="margin-top: 0; font-size:12px;">購入日期</label>
+                <div class="input-group">
+                    <input type="date" id="invPurchaseDate">
+                    <button type="button" class="btn-inline" onclick="toggleUnknownDate('invPurchaseDate')" style="padding: 14px 10px;">未知</button>
+                </div>
+            </div>
+            <div>
+                <label style="margin-top: 0; font-size:12px;">有效期限</label>
+                <div class="input-group">
+                    <input type="date" id="invExpiryDate">
+                    <button type="button" class="btn-inline" onclick="toggleUnknownDate('invExpiryDate')" style="padding: 14px 10px;">未知</button>
+                </div>
+            </div>
         </div>
+        <button class="btn-main" style="margin-top: 15px; padding: 14px;" onclick="addInventory()">➕ 存入批次</button>
+        
         <div id="inventoryList" style="margin-top: 20px;"></div>
     </div>
 
     <div class="section-title">
-        <span>Analytics (統計)</span>
+        <span>Dashboard (戰情儀表板)</span>
         <button class="btn-inline" style="padding: 6px 12px; font-size: 12px;" onclick="toggleStats()">展開 / 收起</button>
     </div>
     <div id="statsContainer" style="display: none; padding-bottom: 10px;">
         <div id="statsArea"></div>
-    </div>
-
-    <div class="section-title">New Record (新增紀錄)</div>
-    <div class="card" id="formCard">
-        <label>狀態追蹤 Status</label>
-        <select id="status" onchange="toggleDynamicFields()">
-            <option value="拍攝中">📷 拍攝中 (Loaded)</option>
-            <option value="已退片">🎞️ 已退片 (Unloaded)</option>
-            <option value="送洗中">🧪 送洗中 (At Lab)</option>
-            <option value="已完成">✅ 已完成歸檔 (Archived)</option>
-        </select>
-
-        <div class="flex-row">
-            <div style="flex: 1.5;">
-                <label>相機 Camera</label>
-                <div class="input-group">
-                    <select id="camera" onchange="autoSetFormat()"></select>
-                    <button class="btn-add" onclick="promptAddCamera()">➕</button>
-                </div>
-            </div>
-            <div style="flex: 1;">
-                <label>片幅 Format</label>
-                <select id="format">
-                    <option value="全幅">全幅</option>
-                    <option value="半格">半格</option>
-                    <option value="120">120</option>
-                </select>
-            </div>
-        </div>
-        
-        <label>底片型號 Film Stock</label>
-        <div class="input-group">
-            <select id="film"></select>
-            <button class="btn-add" onclick="promptAddFilm()">➕</button>
-        </div>
-
-        <button type="button" class="btn-quick-action" onclick="toggleTechFields()">⚙️ 專業技術設定 (鏡頭/光源/ISO)</button>
-        <div id="techFields" class="hidden-group">
-            <label>感光度 ISO (Push/Pull)</label>
-            <select id="iso">
-                <option value="正常">正常拍攝 Box Speed</option>
-                <option value="增感+1">增感 Push +1</option>
-                <option value="增感+2">增感 Push +2</option>
-                <option value="減感-1">減感 Pull -1</option>
-            </select>
-            
-            <label>搭配鏡頭 Lens</label>
-            <div class="input-group">
-                <select id="lens"></select>
-                <button class="btn-add" onclick="promptAddLens()">➕</button>
-            </div>
-
-            <label>主要光源 Lighting</label>
-            <select id="lighting">
-                <option value="自然光為主">自然光為主 Natural Light</option>
-                <option value="室內人造光源">室內人造光源 Indoor</option>
-                <option value="混合光源">混合光源 Mixed</option>
-                <option value="閃光燈/棚燈">閃光燈 / 棚內持續燈 Studio</option>
-            </select>
-        </div>
-
-        <div id="dateFields">
-            <label>上片日期 Date Loaded</label>
-            <div class="input-group">
-                <input type="date" id="loadDate">
-                <button type="button" class="btn-inline" onclick="toggleUnknownDate('loadDate')">不可考</button>
-            </div>
-            
-            <div id="unloadDateContainer" style="display: none;">
-                <label>退片日期 Date Unloaded</label>
-                <div class="input-group">
-                    <input type="date" id="unloadDate">
-                    <button type="button" class="btn-inline" onclick="toggleUnknownDate('unloadDate')">不可考</button>
-                </div>
-            </div>
-            
-            <div id="labDateContainer" style="display: none;">
-                <label>送洗店家 Lab</label>
-                <div class="input-group" style="margin-bottom: 10px;">
-                    <select id="lab"></select>
-                    <button class="btn-add" onclick="promptAddLab()">➕</button>
-                </div>
-                <label>送洗日期 Date to Lab</label>
-                <div class="input-group">
-                    <input type="date" id="labDate">
-                    <button type="button" class="btn-inline" onclick="toggleUnknownDate('labDate')">不可考</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="costArchiveFields" class="hidden-group">
-            <div class="flex-row">
-                <div>
-                    <label>底片成本 (NT$)</label>
-                    <input type="number" id="filmCost" placeholder="450">
-                </div>
-                <div>
-                    <label>沖掃費用 (NT$)</label>
-                    <input type="number" id="labCost" placeholder="200">
-                </div>
-            </div>
-            <label>數位檔案連結 Drive URL</label>
-            <input type="url" id="driveLink" placeholder="貼上雲端硬碟連結">
-        </div>
-
-        <label>專案備註 Notes</label>
-        <input type="text" id="notes" placeholder="拍攝主題、空間陳設筆記...">
-
-        <button id="saveBtn" class="btn-main" onclick="saveRecord()">新增紀錄</button>
-        <button id="cancelBtn" class="btn-cancel" onclick="cancelEdit()">取消</button>
     </div>
 
     <div class="section-title">
@@ -247,165 +246,442 @@
             <option value="已完成">✅ 已完成</option>
         </select>
     </div>
+    
+    <div class="search-bar">
+        <span>🔍</span>
+        <input type="text" id="searchInput" onkeyup="renderRecords()" placeholder="搜尋專案、標籤、相機、底片...">
+    </div>
+
     <div id="recordList"></div>
     
-    <button class="btn-export" onclick="exportToCSV()">📥 匯出 CSV 報表資料</button>
-    
-    <button class="btn-export" style="margin-top: 0; background-color: var(--badge-shoot-bg);" onclick="exportBackup()">📦 匯出全部資料 (備份用)</button>
-    
-    <label for="importBackup" class="btn-export" style="margin-top: 0; margin-bottom: 40px; background-color: var(--badge-done-bg); text-align: center; display: block; box-sizing: border-box; cursor: pointer;">🔄 匯入資料備份 (覆蓋當前資料)</label>
-    <input type="file" id="importBackup" accept=".json" style="display: none;" onchange="importBackupFile(event)">
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px dashed var(--border-light);">
+        <button class="btn-export" onclick="exportToCSV()">📥 匯出 CSV 報表資料</button>
+        <button class="btn-export" style="margin-top: 0; background-color: var(--badge-shoot-bg);" onclick="exportBackup()">📦 匯出全部資料 (備份用)</button>
+        <label for="importBackup" class="btn-export" style="margin-top: 0; margin-bottom: 40px; background-color: var(--badge-done-bg); text-align: center; display: block; box-sizing: border-box; cursor: pointer;">🔄 匯入資料備份 (覆蓋當前資料)</label>
+        <input type="file" id="importBackup" accept=".json" style="display: none;" onchange="importBackupFile(event)">
+    </div>
+
+    <button class="fab" onclick="openMainForm(-1)">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linejoin="round">
+            <rect x="6" y="4" width="12" height="16" rx="2"></rect>
+            <path d="M9 4 V2 H15 V4"></path>
+            <path d="M6 8 H18"></path>
+            <path d="M6 16 H18"></path>
+        </svg>
+    </button>
+
+    <div id="mainFormModal" class="modal-overlay" onclick="closeModalOnBg(event, 'mainFormModal')">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="formModalTitle">新增紀錄</h3>
+                <button class="btn-close" onclick="closeModal('mainFormModal')">✕</button>
+            </div>
+            
+            <label>狀態追蹤 Status</label>
+            <select id="status" onchange="toggleDynamicFields()">
+                <option value="拍攝中">📷 拍攝中 (Loaded)</option>
+                <option value="已退片">🎞️ 已退片 (Unloaded)</option>
+                <option value="送洗中">🧪 送洗中 (At Lab)</option>
+                <option value="已完成">✅ 已完成歸檔 (Archived)</option>
+            </select>
+
+            <div class="flex-row">
+                <div style="flex: 1.5;">
+                    <label>相機 Camera</label>
+                    <div class="input-group">
+                        <select id="camera" onchange="autoSetFormat()"></select>
+                        <button class="btn-add" onclick="openGearEditor('camera', -1)">➕</button>
+                    </div>
+                </div>
+                <div style="flex: 1;">
+                    <label>片幅 Format</label>
+                    <select id="format" disabled>
+                        <option value="全幅">全幅</option>
+                        <option value="半格">半格</option>
+                        <option value="120">120</option>
+                    </select>
+                </div>
+            </div>
+            
+            <label>底片型號 Film Stock</label>
+            <div class="input-group">
+                <select id="film"></select>
+                <button class="btn-add" onclick="openGearEditor('film', -1)">➕</button>
+            </div>
+
+            <button type="button" class="btn-quick-action" onclick="toggleTechFields()">⚙️ 專業技術設定 (鏡頭/光源/ISO)</button>
+            <div id="techFields" class="hidden-group">
+                <label>感光度 ISO (Push/Pull)</label>
+                <select id="iso">
+                    <option value="正常">正常拍攝 Box Speed</option>
+                    <option value="增感+1">增感 Push +1</option>
+                    <option value="增感+2">增感 Push +2</option>
+                    <option value="減感-1">減感 Pull -1</option>
+                </select>
+                
+                <label>搭配鏡頭 Lens</label>
+                <div class="input-group">
+                    <select id="lens"></select>
+                    <button class="btn-add" onclick="openGearEditor('lens', -1)">➕</button>
+                </div>
+
+                <label>主要光源 Lighting</label>
+                <select id="lighting">
+                    <option value="自然光為主">自然光為主</option>
+                    <option value="室內人造光源">室內人造光源</option>
+                    <option value="混合光源">混合光源</option>
+                    <option value="閃光燈/棚燈">閃光燈/棚燈</option>
+                </select>
+            </div>
+
+            <div id="dateFields">
+                <label>上片日期 Date Loaded</label>
+                <div class="input-group">
+                    <input type="date" id="loadDate">
+                    <button type="button" class="btn-inline" onclick="toggleUnknownDate('loadDate')">不可考</button>
+                </div>
+                <div id="unloadDateContainer" style="display: none;">
+                    <label>退片日期 Date Unloaded</label>
+                    <div class="input-group">
+                        <input type="date" id="unloadDate">
+                        <button type="button" class="btn-inline" onclick="toggleUnknownDate('unloadDate')">不可考</button>
+                    </div>
+                </div>
+                <div id="labDateContainer" style="display: none;">
+                    <label>送洗店家 Lab</label>
+                    <div class="input-group" style="margin-bottom: 10px;">
+                        <select id="lab"></select>
+                        <button class="btn-add" onclick="openGearEditor('lab', -1)">➕</button>
+                    </div>
+                    <label>送洗日期 Date to Lab</label>
+                    <div class="input-group">
+                        <input type="date" id="labDate">
+                        <button type="button" class="btn-inline" onclick="toggleUnknownDate('labDate')">不可考</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="costArchiveFields" class="hidden-group">
+                <div class="flex-row">
+                    <div>
+                        <label>底片成本 (NT$)</label>
+                        <input type="number" id="filmCost" placeholder="450">
+                    </div>
+                    <div>
+                        <label>沖掃費用 (NT$)</label>
+                        <input type="number" id="labCost" placeholder="200">
+                    </div>
+                </div>
+                <label>數位檔案連結 Drive URL</label>
+                <input type="url" id="driveLink" placeholder="貼上連結">
+            </div>
+
+            <label>專案備註 Notes</label>
+            <input type="text" id="notes" placeholder="拍攝主題、#專案名稱...">
+
+            <button id="saveBtn" class="btn-main" onclick="saveRecord()">儲存紀錄</button>
+        </div>
+    </div>
+
+    <div id="gearRoomModal" class="modal-overlay" onclick="closeModalOnBg(event, 'gearRoomModal')">
+        <div class="modal-content" style="height: 85vh;">
+            <div class="modal-header">
+                <h3>⚙️ 器材室主檔管理</h3>
+                <button class="btn-close" onclick="closeModal('gearRoomModal')">✕</button>
+            </div>
+            <div class="gear-tabs">
+                <button id="tab-camera" onclick="switchGearTab('camera')">相機</button>
+                <button id="tab-film" onclick="switchGearTab('film')">底片</button>
+                <button id="tab-lens" onclick="switchGearTab('lens')">鏡頭</button>
+                <button id="tab-lab" onclick="switchGearTab('lab')">店家</button>
+            </div>
+            <button class="btn-main" style="margin-top: 0; margin-bottom: 15px; padding: 12px;" onclick="triggerAddGearFromRoom()">➕ 新增項目</button>
+            <div id="gearList" class="gear-list"></div>
+        </div>
+    </div>
+
+    <div id="gearEditModal" class="modal-overlay" onclick="closeModalOnBg(event, 'gearEditModal')" style="z-index: 300;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="gearEditTitle">新增項目</h3>
+                <button class="btn-close" onclick="closeModal('gearEditModal')">✕</button>
+            </div>
+            <input type="hidden" id="geType">
+            <input type="hidden" id="geIndex">
+            
+            <label id="geNameLabel">完整名稱：</label>
+            <input type="text" id="geName" placeholder="例如: Nikon FM2">
+            
+            <div id="geFormatContainer" style="display:none;">
+                <label>片幅：</label>
+                <select id="geFormat">
+                    <option value="全幅">全幅</option>
+                    <option value="半格">半格</option>
+                    <option value="120">120</option>
+                </select>
+            </div>
+            
+            <div id="geFilmMetaContainer" style="display:none;" class="flex-row">
+                <div>
+                    <label>感光度 (ISO)：</label><input type="number" id="geIso" placeholder="400">
+                </div>
+                <div>
+                    <label>預設張数：</label><input type="number" id="geExposures" placeholder="36">
+                </div>
+            </div>
+            <button class="btn-main update-btn" onclick="saveGearItem()">💾 儲存</button>
+        </div>
+    </div>
+
+    <div id="quickLoadModal" class="modal-overlay" onclick="closeModalOnBg(event, 'quickLoadModal')">
+        <div class="modal-content">
+            <div class="modal-header"><h3>📷 快速上片</h3><button class="btn-close" onclick="closeModal('quickLoadModal')">✕</button></div>
+            <p id="qlFilmNameDisplay" style="font-weight:700; color:var(--accent); font-size:18px; margin-top:0;"></p>
+            <label>請選擇使用的相機：</label><select id="qlCamera"></select>
+            <label>設定 ISO (有無增減感)：</label>
+            <select id="qlIso">
+                <option value="正常">正常拍攝 Box Speed</option>
+                <option value="增感+1">增感 Push +1</option><option value="增感+2">增感 Push +2</option><option value="減感-1">減感 Pull -1</option>
+            </select>
+            <button class="btn-main" onclick="confirmQuickLoad()">🚀 確認上片</button>
+        </div>
+    </div>
+
+    <div id="smartActionModal" class="modal-overlay" onclick="closeModalOnBg(event, 'smartActionModal')">
+        <div class="modal-content">
+            <div class="modal-header"><h3 id="saTitle">智慧處理</h3><button class="btn-close" onclick="closeModal('smartActionModal')">✕</button></div>
+            <div id="saLabSection" style="display:none;"><label>請選擇送洗店家：</label><select id="saLab"></select></div>
+            <div id="saDoneSection" style="display:none;">
+                <label>沖掃費用 (NT$)：</label><input type="number" id="saLabCost" placeholder="200">
+                <label>數位檔案連結：</label><input type="url" id="saDriveLink" placeholder="貼上連結...">
+            </div>
+            <button class="btn-main update-btn" onclick="confirmSmartAction()">確認送出</button>
+        </div>
+    </div>
 
     <script>
         let memoryStorage = {};
+        function safeGetStorage(key) { try { return localStorage.getItem(key); } catch(e) { return memoryStorage[key] || null; } }
+        function safeSetStorage(key, value) { try { localStorage.setItem(key, value); } catch(e) { memoryStorage[key] = value; } }
+        function safeParse(key, defaultValue) { try { const val = safeGetStorage(key); return val ? JSON.parse(val) : defaultValue; } catch(e) { return defaultValue; } }
 
-        function safeGetStorage(key) {
-            try { return localStorage.getItem(key); } 
-            catch(e) { return memoryStorage[key] || null; }
-        }
-        function safeSetStorage(key, value) {
-            try { localStorage.setItem(key, value); } 
-            catch(e) { memoryStorage[key] = value; }
-        }
-        function safeParse(key, defaultValue) {
-            try { const val = safeGetStorage(key); return val ? JSON.parse(val) : defaultValue; } 
-            catch(e) { return defaultValue; }
-        }
-
-        function initTheme() {
-            const savedTheme = safeGetStorage('theme');
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        }
-
-        document.getElementById('themeBtn').addEventListener('click', function() {
-            const root = document.documentElement;
-            if (root.getAttribute('data-theme') === 'dark') {
-                root.removeAttribute('data-theme'); safeSetStorage('theme', 'light');
-            } else {
-                root.setAttribute('data-theme', 'dark'); safeSetStorage('theme', 'dark');
-            }
-        });
-
-        // 讀取本機資料
+        /* 初始化與資料轉移 */
+        let customCameras = [], customFilms = [], customLenses = [], customLabs = [];
         let filmRecords = safeParse('filmTrackerRecords', []);
         let inventory = safeParse('filmInventory', []);
-        let customCameras = safeParse('customCameras', []);
-        let customFilms = safeParse('customFilms', []);
-        let customLenses = safeParse('customLenses', []);
-        let customLabs = safeParse('customLabs', []); 
-        let editingIndex = -1;
 
-        // 無預設相機與底片選項
-        const defaultCameras = [];
-        const defaultFilms = [];
-        const defaultLenses = [ "未記錄", "35mm", "50mm" ];
-        const defaultLabs = [ "未指定", "ILFORDTWLAB" ]; 
+        function initDatabase() {
+            let isGearInit = safeParse('isGearInit_v7', false);
+            if (!isGearInit) {
+                const defCams = [ { name: "Nikon FM2", format: "全幅" }, { name: "Leica M6", format: "全幅" }, { name: "Olympus Pen EE-3", format: "半格" } ];
+                const defFilms = [ { name: "Kodak Portra 400", iso: 400, exposures: 36 }, { name: "Kodak Gold 200", iso: 200, exposures: 36 } ];
+                const defLenses = [ { name: "未記錄" }, { name: "35mm" }, { name: "50mm" } ];
+                const defLabs = [ { name: "未指定" }, { name: "ILFORDTWLAB" } ];
 
-        // 日期欄位「不可考」按鈕切換邏輯
-        function toggleUnknownDate(id) {
-            const el = document.getElementById(id);
-            if(el.type === 'text' && el.value === '不可考') {
-                el.type = 'date';
-                el.value = '';
+                let oldCams = safeParse('customCameras', []);
+                let oldFilms = safeParse('customFilms', []).map(f => typeof f === 'string' ? { name: f, iso: 400, exposures: 36 } : f);
+                let oldLenses = safeParse('customLenses', []).map(l => typeof l === 'string' ? { name: l } : l);
+                let oldLabs = safeParse('customLabs', []).map(l => typeof l === 'string' ? { name: l } : l);
+
+                function mergeUnique(arr1, arr2) {
+                    const map = new Map();
+                    arr1.forEach(i => map.set(i.name, i));
+                    arr2.forEach(i => map.set(i.name, i));
+                    return Array.from(map.values());
+                }
+
+                customCameras = mergeUnique(defCams, oldCams);
+                customFilms = mergeUnique(defFilms, oldFilms);
+                customLenses = mergeUnique(defLenses, oldLenses);
+                customLabs = mergeUnique(defLabs, oldLabs);
+
+                safeSetStorage('customCameras', JSON.stringify(customCameras));
+                safeSetStorage('customFilms', JSON.stringify(customFilms));
+                safeSetStorage('customLenses', JSON.stringify(customLenses));
+                safeSetStorage('customLabs', JSON.stringify(customLabs));
+                safeSetStorage('isGearInit_v7', true);
             } else {
-                el.type = 'text';
-                el.value = '不可考';
-            }
-        }
-
-        function applyDateVal(id, val) {
-            const el = document.getElementById(id);
-            if (val === '不可考') {
-                el.type = 'text';
-                el.value = '不可考';
-            } else {
-                el.type = 'date';
-                el.value = val || '';
+                customCameras = safeParse('customCameras', []);
+                customFilms = safeParse('customFilms', []);
+                customLenses = safeParse('customLenses', []);
+                customLabs = safeParse('customLabs', []);
             }
         }
 
         function initApp() {
-            initTheme();
-            const loadDateEl = document.getElementById('loadDate');
-            loadDateEl.type = 'date';
-            loadDateEl.valueAsDate = new Date();
-            renderDropdowns(); renderInventory(); toggleDynamicFields(); renderRecords(); renderStats(); 
-        }
-
-        function renderDropdowns() {
-            const cameraSelect = document.getElementById('camera');
-            const filmSelect = document.getElementById('film');
-            const lensSelect = document.getElementById('lens');
-            const labSelect = document.getElementById('lab');
+            const savedTheme = safeGetStorage('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.setAttribute('data-theme', 'dark');
             
-            cameraSelect.innerHTML = ''; filmSelect.innerHTML = ''; 
-            lensSelect.innerHTML = ''; labSelect.innerHTML = '';
+            // 預設購入日期為今天
+            document.getElementById('invPurchaseDate').valueAsDate = new Date();
 
-            [...defaultCameras, ...customCameras].forEach(cam => {
-                const opt = document.createElement('option'); opt.value = cam.name; opt.textContent = cam.name; opt.setAttribute('data-format', cam.format);
-                cameraSelect.appendChild(opt);
-            });
-            cameraSelect.innerHTML += '<option value="其他">其他...</option>';
-
-            [...defaultFilms, ...customFilms].forEach(film => {
-                const opt = document.createElement('option'); opt.value = film; opt.textContent = film;
-                filmSelect.appendChild(opt);
-            });
-            filmSelect.innerHTML += '<option value="其他">其他...</option>';
-
-            [...defaultLenses, ...customLenses].forEach(lens => {
-                const opt = document.createElement('option'); opt.value = lens; opt.textContent = lens;
-                lensSelect.appendChild(opt);
-            });
-
-            [...defaultLabs, ...customLabs].forEach(lab => {
-                const opt = document.createElement('option'); opt.value = lab; opt.textContent = lab;
-                labSelect.appendChild(opt);
-            });
-            labSelect.innerHTML += '<option value="其他店家">其他店家...</option>';
-
-            autoSetFormat();
+            initDatabase(); renderDropdowns(); renderInventory(); renderRecords(); renderStats(); 
         }
 
-        function promptAddCamera() {
-            const name = prompt("請輸入新相機名稱：");
-            if (!name) return;
-            let format = prompt("請輸入片幅 (全幅、半格 或 120)：", "全幅") || "全幅";
-            customCameras.push({ name: name.trim(), format: format.trim() });
-            safeSetStorage('customCameras', JSON.stringify(customCameras));
-            renderDropdowns(); document.getElementById('camera').value = name.trim(); autoSetFormat();
-        }
+        document.getElementById('themeBtn').addEventListener('click', function() {
+            if (document.documentElement.getAttribute('data-theme') === 'dark') { document.documentElement.removeAttribute('data-theme'); safeSetStorage('theme', 'light'); } 
+            else { document.documentElement.setAttribute('data-theme', 'dark'); safeSetStorage('theme', 'dark'); }
+        });
 
-        function promptAddFilm() {
-            const name = prompt("請輸入新底片名稱：");
-            if (!name) return;
-            customFilms.push(name.trim());
-            safeSetStorage('customFilms', JSON.stringify(customFilms));
-            renderDropdowns(); document.getElementById('film').value = name.trim();
-        }
+        /* Modals 基本邏輯 */
+        function openModal(id) { const m = document.getElementById(id); m.style.display = 'flex'; setTimeout(() => m.classList.add('show'), 10); }
+        function closeModal(id) { const m = document.getElementById(id); m.classList.remove('show'); setTimeout(() => m.style.display = 'none', 300); }
+        function closeModalOnBg(e, id) { if(e.target.id === id) closeModal(id); }
 
-        function promptAddLens() {
-            const name = prompt("請輸入新鏡頭名稱：");
-            if (!name) return;
-            customLenses.push(name.trim());
-            safeSetStorage('customLenses', JSON.stringify(customLenses));
-            renderDropdowns(); document.getElementById('lens').value = name.trim();
-        }
-
-        function promptAddLab() {
-            const name = prompt("請輸入新送洗店家名稱：");
-            if (!name) return;
-            customLabs.push(name.trim());
-            safeSetStorage('customLabs', JSON.stringify(customLabs));
-            renderDropdowns(); document.getElementById('lab').value = name.trim();
-        }
-
+        function toggleUnknownDate(id) { const el = document.getElementById(id); if(el.type === 'text') { el.type = 'date'; el.value = ''; } else { el.type = 'text'; el.value = '不可考'; } }
+        function applyDateVal(id, val) { const el = document.getElementById(id); if (val === '不可考') { el.type = 'text'; el.value = '不可考'; } else { el.type = 'date'; el.value = val || ''; } }
         function toggleFridge() { const area = document.getElementById('fridgeArea'); area.style.display = area.style.display === 'none' ? 'block' : 'none'; }
         function toggleStats() { const container = document.getElementById('statsContainer'); container.style.display = container.style.display === 'none' ? 'block' : 'none'; }
         function toggleTechFields() { const area = document.getElementById('techFields'); area.style.display = area.style.display === 'none' || area.style.display === '' ? 'block' : 'none'; }
+
+        /* ================= ⚙️ 器材室 (Gear Room) 邏輯 ================= */
+        let currentGearTab = 'camera';
+        function renderDropdowns() {
+            const fill = (id, arr, getFmt = false) => { document.getElementById(id).innerHTML = arr.map(i => `<option value="${i.name}" ${getFmt ? `data-format="${i.format}"` : ''}>${i.name}</option>`).join(''); };
+            fill('camera', customCameras, true); fill('qlCamera', customCameras, true); fill('film', customFilms); fill('invFilmSelect', customFilms); fill('lens', customLenses); fill('lab', customLabs); fill('saLab', customLabs);
+            autoSetFormat();
+        }
+        function autoSetFormat() {
+            const cam = document.getElementById('camera'); const fmt = document.getElementById('format');
+            if(cam.selectedIndex === -1) return; const targetFormat = cam.options[cam.selectedIndex].getAttribute('data-format'); if (targetFormat) fmt.value = targetFormat;
+        }
+        function openGearRoom(tab) { switchGearTab(tab); openModal('gearRoomModal'); }
+        function switchGearTab(tab) {
+            currentGearTab = tab; ['camera','film','lens','lab'].forEach(t => document.getElementById(`tab-${t}`).classList.remove('active'));
+            document.getElementById(`tab-${tab}`).classList.add('active'); renderGearList(tab);
+        }
+        function renderGearList(tab) {
+            const list = document.getElementById('gearList'); let data = tab === 'camera' ? customCameras : tab === 'film' ? customFilms : tab === 'lens' ? customLenses : customLabs;
+            list.innerHTML = data.map((item, index) => {
+                let meta = tab === 'camera' ? `片幅: ${item.format}` : tab === 'film' ? `ISO: ${item.iso} | 張數: ${item.exposures}` : '';
+                return `<div class="gear-item"><div><span>${item.name}</span>${meta ? `<span class="gear-item-meta">${meta}</span>` : ''}</div>
+                        <div class="gear-actions"><button class="btn-gear-edit" onclick="openGearEditor('${tab}', ${index})">編輯</button><button class="btn-gear-del" onclick="deleteGearItem('${tab}', ${index})">刪除</button></div></div>`;
+            }).join('');
+        }
+        function triggerAddGearFromRoom() { openGearEditor(currentGearTab, -1); }
+        function openGearEditor(type, index) {
+            document.getElementById('geType').value = type; document.getElementById('geIndex').value = index; document.getElementById('gearEditTitle').textContent = index === -1 ? '✨ 新增項目' : '💾 編輯項目';
+            document.getElementById('geFormatContainer').style.display = 'none'; document.getElementById('geFilmMetaContainer').style.display = 'none';
+            let item = { name: '', format: '全幅', iso: 400, exposures: 36 };
+            if(index !== -1) item = type === 'camera' ? customCameras[index] : type === 'film' ? customFilms[index] : type === 'lens' ? customLenses[index] : customLabs[index];
+            document.getElementById('geName').value = item.name;
+            if(type === 'camera') { document.getElementById('geFormatContainer').style.display = 'block'; document.getElementById('geFormat').value = item.format || '全幅'; } 
+            else if (type === 'film') { document.getElementById('geFilmMetaContainer').style.display = 'flex'; document.getElementById('geIso').value = item.iso || 400; document.getElementById('geExposures').value = item.exposures || 36; }
+            openModal('gearEditModal');
+        }
+        function deleteGearItem(type, index) {
+            if(!confirm('刪除主檔不會影響舊紀錄。確定刪除？')) return;
+            if(type === 'camera') customCameras.splice(index, 1); if(type === 'film') customFilms.splice(index, 1); if(type === 'lens') customLenses.splice(index, 1); if(type === 'lab') customLabs.splice(index, 1);
+            saveAllGear(); renderGearList(type); renderDropdowns();
+        }
+        function saveGearItem() {
+            const type = document.getElementById('geType').value, index = parseInt(document.getElementById('geIndex').value), newName = document.getElementById('geName').value.trim();
+            if(!newName) return alert('名稱不可為空！');
+            let targetArray, newItem = { name: newName };
+            if(type === 'camera') { targetArray = customCameras; newItem.format = document.getElementById('geFormat').value; } 
+            else if(type === 'film') { targetArray = customFilms; newItem.iso = parseInt(document.getElementById('geIso').value) || 400; newItem.exposures = parseInt(document.getElementById('geExposures').value) || 36; } 
+            else if(type === 'lens') { targetArray = customLenses; } else { targetArray = customLabs; }
+            if (targetArray.findIndex((item, i) => item.name === newName && i !== index) !== -1) return alert('此名稱已存在！');
+            if(index === -1) targetArray.push(newItem); else { const oldName = targetArray[index].name; targetArray[index] = newItem; cascadeUpdate(type, oldName, newName); }
+            saveAllGear(); closeModal('gearEditModal'); renderDropdowns();
+            if(document.getElementById('gearRoomModal').classList.contains('show')) renderGearList(type); else if (index === -1) { document.getElementById(type).value = newName; if(type === 'camera') autoSetFormat(); }
+        }
+        function saveAllGear() { safeSetStorage('customCameras', JSON.stringify(customCameras)); safeSetStorage('customFilms', JSON.stringify(customFilms)); safeSetStorage('customLenses', JSON.stringify(customLenses)); safeSetStorage('customLabs', JSON.stringify(customLabs)); }
+        function cascadeUpdate(type, oldName, newName) {
+            if (oldName === newName || !oldName) return; let rc = false, ic = false;
+            filmRecords.forEach(r => { if (type === 'camera' && r.camera === oldName) { r.camera = newName; rc = true; } if (type === 'film' && r.film === oldName) { r.film = newName; rc = true; } if (type === 'lens' && r.lens === oldName) { r.lens = newName; rc = true; } if (type === 'lab' && r.lab === oldName) { r.lab = newName; rc = true; } });
+            if (type === 'film') inventory.forEach(inv => { if (inv.name === oldName) { inv.name = newName; ic = true; } });
+            if (rc) { safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords)); renderRecords(); renderStats(); }
+            if (ic) { safeSetStorage('filmInventory', JSON.stringify(inventory)); renderInventory(); }
+        }
+
+        /* ================= 冰箱與批次成本邏輯 ================= */
+        function addInventory() {
+            const name = document.getElementById('invFilmSelect').value;
+            const qty = document.getElementById('invQty').value;
+            const cost = document.getElementById('invCost').value;
+            const pDate = document.getElementById('invPurchaseDate').value;
+            const eDate = document.getElementById('invExpiryDate').value;
+            
+            if(!name || !qty) return alert('請填寫數量');
+            
+            inventory.push({ 
+                name, 
+                qty: parseInt(qty), 
+                purchaseDate: pDate, 
+                expiryDate: eDate, 
+                cost: cost || '' 
+            });
+            safeSetStorage('filmInventory', JSON.stringify(inventory));
+            document.getElementById('invQty').value = ''; 
+            document.getElementById('invCost').value = ''; 
+            renderInventory();
+        }
+        
+        function removeInventory(index) { 
+            inventory[index].qty -= 1;
+            if (inventory[index].qty <= 0) {
+                inventory.splice(index, 1); 
+            }
+            safeSetStorage('filmInventory', JSON.stringify(inventory)); 
+            renderInventory(); 
+        }
+
+        let quickLoadInvIndex = -1;
+        function initQuickLoad(index) {
+            quickLoadInvIndex = index; document.getElementById('qlFilmNameDisplay').textContent = "🎞️ " + inventory[index].name; openModal('quickLoadModal');
+        }
+        function confirmQuickLoad() {
+            if(quickLoadInvIndex === -1) return;
+            const camSelect = document.getElementById('qlCamera');
+            const batchCost = inventory[quickLoadInvIndex].cost || ''; 
+            
+            filmRecords.push({
+                status: '拍攝中', camera: camSelect.value, film: inventory[quickLoadInvIndex].name, 
+                format: camSelect.options[camSelect.selectedIndex].getAttribute('data-format') || '全幅', 
+                iso: document.getElementById('qlIso').value, lens: '未記錄', lighting: '自然光為主', 
+                loadDate: new Date().toISOString().split('T')[0], unloadDate: '', labDate: '', lab: '未指定', filmCost: batchCost, labCost: '', driveLink: '', notes: ''
+            });
+            
+            inventory[quickLoadInvIndex].qty -= 1; 
+            if(inventory[quickLoadInvIndex].qty <= 0) {
+                inventory.splice(quickLoadInvIndex, 1);
+            }
+            safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords)); safeSetStorage('filmInventory', JSON.stringify(inventory));
+            closeModal('quickLoadModal'); renderInventory(); renderRecords(); renderStats();
+        }
+
+        function renderInventory() {
+            const list = document.getElementById('inventoryList'); list.innerHTML = '';
+            if(inventory.length === 0) { list.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:13px;">冰箱目前是空的</p>'; return; }
+            inventory.forEach((item, idx) => {
+                const costDisplay = item.cost ? ` | 成本: $${item.cost}` : '';
+                const pDate = item.purchaseDate || '未標示';
+                const eDate = item.expiryDate || item.date || '未標示';
+
+                const div = document.createElement('div'); div.className = 'fridge-item';
+                div.innerHTML = `<div style="flex:1; line-height: 1.4;"><strong>${item.name}</strong> × ${item.qty}卷 <br> <span style="color:var(--text-sub); font-size:12px;">購入: ${pDate} | 期限: ${eDate} ${costDisplay}</span></div>
+                                 <div style="display:flex; gap:6px;"><button class="btn-inline" style="background:var(--text-main); color:var(--bg-color);" onclick="initQuickLoad(${idx})">📷 上片</button><button class="btn-inline" onclick="removeInventory(${idx})">消耗</button></div>`;
+                list.appendChild(div);
+            });
+        }
+
+        /* ================= 紀錄表單與智慧動作 ================= */
+        let editingIndex = -1;
+        function openMainForm(index) {
+            editingIndex = index; document.getElementById('formModalTitle').textContent = index === -1 ? '✨ 新增紀錄' : '💾 編輯紀錄';
+            if(index === -1) {
+                document.getElementById('status').value = '拍攝中'; applyDateVal('loadDate', ''); document.getElementById('loadDate').valueAsDate = new Date();
+                document.getElementById('iso').value = '正常'; ['unloadDate','labDate','filmCost','labCost','driveLink','notes'].forEach(id => { if(document.getElementById(id).type === 'text' && document.getElementById(id).value==='不可考') applyDateVal(id, ''); document.getElementById(id).value = ''; });
+            } else {
+                const r = filmRecords[index]; document.getElementById('status').value = r.status; document.getElementById('camera').value = r.camera;
+                document.getElementById('film').value = r.film; document.getElementById('format').value = r.format; document.getElementById('iso').value = r.iso; 
+                document.getElementById('lens').value = r.lens || '未記錄'; document.getElementById('lab').value = r.lab || '未指定'; document.getElementById('lighting').value = r.lighting || '自然光為主'; 
+                applyDateVal('loadDate', r.loadDate); applyDateVal('unloadDate', r.unloadDate); applyDateVal('labDate', r.labDate);
+                document.getElementById('filmCost').value = r.filmCost || ''; document.getElementById('labCost').value = r.labCost || ''; document.getElementById('driveLink').value = r.driveLink || ''; document.getElementById('notes').value = r.notes || '';
+            }
+            toggleDynamicFields(); openModal('mainFormModal');
+        }
 
         function toggleDynamicFields() {
             const status = document.getElementById('status').value;
@@ -414,300 +690,127 @@
             document.getElementById('costArchiveFields').style.display = (status === '已完成') ? 'block' : 'none';
         }
 
-        function autoSetFormat() {
-            const cameraSelect = document.getElementById('camera');
-            const formatSelect = document.getElementById('format');
-            if(cameraSelect.selectedIndex === -1) return;
-            const targetFormat = cameraSelect.options[cameraSelect.selectedIndex].getAttribute('data-format');
-            if (targetFormat) formatSelect.value = targetFormat;
+        function saveRecord() {
+            const record = {
+                status: document.getElementById('status').value, camera: document.getElementById('camera').value, film: document.getElementById('film').value, format: document.getElementById('format').value,
+                iso: document.getElementById('iso').value, lens: document.getElementById('lens').value, lighting: document.getElementById('lighting').value, loadDate: document.getElementById('loadDate').value,
+                unloadDate: document.getElementById('unloadDate').value, labDate: document.getElementById('labDate').value, lab: document.getElementById('lab').value, filmCost: document.getElementById('filmCost').value,
+                labCost: document.getElementById('labCost').value, driveLink: document.getElementById('driveLink').value, notes: document.getElementById('notes').value
+            };
+            if (editingIndex === -1) filmRecords.push(record); else filmRecords[editingIndex] = record;
+            safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords)); closeModal('mainFormModal'); renderRecords(); renderStats(); 
         }
 
-        function addInventory() {
-            const name = document.getElementById('invFilmName').value;
-            const qty = document.getElementById('invQty').value;
-            const date = document.getElementById('invDate').value;
-            if(!name || !qty) { alert('請填寫名稱和數量'); return; }
-            inventory.push({ name, qty: parseInt(qty), date });
-            safeSetStorage('filmInventory', JSON.stringify(inventory));
-            document.getElementById('invFilmName').value = ''; document.getElementById('invQty').value = '';
-            renderInventory();
+        function deleteRecord(index) { if(confirm('確定刪除此紀錄？')) { filmRecords.splice(index, 1); safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords)); renderRecords(); renderStats(); } }
+
+        let smartActionRecIndex = -1, smartActionType = '';
+        function triggerSmartAction(index, actionType) {
+            smartActionRecIndex = index; smartActionType = actionType; const today = new Date().toISOString().split('T')[0];
+            if (actionType === 'unload') { filmRecords[index].status = '已退片'; filmRecords[index].unloadDate = today; safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords)); renderRecords(); renderStats(); } 
+            else if (actionType === 'lab') { document.getElementById('saTitle').textContent = '🧪 準備送洗'; document.getElementById('saLabSection').style.display = 'block'; document.getElementById('saDoneSection').style.display = 'none'; document.getElementById('saLab').value = filmRecords[index].lab || '未指定'; openModal('smartActionModal'); }
+            else if (actionType === 'done') { document.getElementById('saTitle').textContent = '✅ 歸檔圖檔'; document.getElementById('saLabSection').style.display = 'none'; document.getElementById('saDoneSection').style.display = 'block'; document.getElementById('saLabCost').value = filmRecords[index].labCost || ''; document.getElementById('saDriveLink').value = filmRecords[index].driveLink || ''; openModal('smartActionModal'); }
+        }
+        function confirmSmartAction() {
+            if(smartActionRecIndex === -1) return; const today = new Date().toISOString().split('T')[0], r = filmRecords[smartActionRecIndex];
+            if(smartActionType === 'lab') { r.status = '送洗中'; r.labDate = today; r.lab = document.getElementById('saLab').value; } 
+            else if (smartActionType === 'done') { r.status = '已完成'; r.labCost = document.getElementById('saLabCost').value; r.driveLink = document.getElementById('saDriveLink').value; }
+            safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords)); closeModal('smartActionModal'); renderRecords(); renderStats();
         }
 
-        function removeInventory(index) {
-            inventory.splice(index, 1);
-            safeSetStorage('filmInventory', JSON.stringify(inventory));
-            renderInventory();
-        }
-
-        function renderInventory() {
-            const list = document.getElementById('inventoryList'); list.innerHTML = '';
-            if(inventory.length === 0) { list.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:13px;">冰箱目前是空的</p>'; return; }
-            inventory.forEach((item, idx) => {
-                const div = document.createElement('div'); div.className = 'fridge-item';
-                div.innerHTML = `
-                    <div><strong>${item.name}</strong> × ${item.qty}卷 <br> <span style="color:var(--text-sub); font-size:12px;">期限: ${item.date || '未標示'}</span></div>
-                    <button class="btn-inline" onclick="removeInventory(${idx})">消耗</button>
-                `;
-                list.appendChild(div);
-            });
-        }
-
-        function renderStats() {
-            const statsArea = document.getElementById('statsArea');
-            if (filmRecords.length === 0) { statsArea.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:14px;">尚無紀錄產生統計</p>'; return; }
-
-            const summary = {};
-            filmRecords.forEach(r => {
-                if (!summary[r.film]) summary[r.film] = { count: 0, totalCost: 0, cameras: new Set() };
-                summary[r.film].count += 1;
-                summary[r.film].totalCost += (parseInt(r.filmCost) || 0) + (parseInt(r.labCost) || 0);
-                if(r.camera) summary[r.film].cameras.add(r.camera);
-            });
-
-            let html = '';
-            for (const film in summary) {
-                const data = summary[film];
-                const camerasStr = Array.from(data.cameras).join('、') || '無紀錄';
-                html += `
-                    <div class="stat-item">
-                        <h4>🎞️ ${film}</h4>
-                        <p><strong>累積拍攝：</strong>${data.count} 卷</p>
-                        <p><strong>搭配機身：</strong>${camerasStr}</p>
-                        <p><strong>總計開銷：</strong>NT$ ${data.totalCost}</p>
-                    </div>
-                `;
-            }
-            statsArea.innerHTML = html;
-        }
-
-        function quickAction(index, actionType) {
-            const today = new Date().toISOString().split('T')[0];
-            if (actionType === 'unload') { filmRecords[index].status = '已退片'; filmRecords[index].unloadDate = today; } 
-            else if (actionType === 'lab') { filmRecords[index].status = '送洗中'; filmRecords[index].labDate = today; }
-            else if (actionType === 'done') { filmRecords[index].status = '已完成'; }
-            safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords));
-            renderRecords();
-        }
-
-        function shareToNotes(index) {
-            const r = filmRecords[index];
-            const text = `🎞️ 底片紀錄摘要\n相機：${r.camera}\n底片：${r.film}\n狀態：${r.status}\n上片：${r.loadDate}\n備註：${r.notes || '無'}`;
-            if (navigator.share) {
-                navigator.share({ title: '底片資產紀錄', text: text }).catch(console.error);
-            } else {
-                alert("文字已備妥，請手動複製：\n\n" + text);
-            }
-        }
-
+        /* ================= 卡片渲染 ================= */
         function renderRecords() {
             const list = document.getElementById('recordList'); list.innerHTML = '';
-            
-            const filterVal = document.getElementById('filterStatus').value;
+            const filterVal = document.getElementById('filterStatus').value, query = document.getElementById('searchInput').value.toLowerCase().trim();
             let displayRecords = filmRecords.map((r, idx) => ({ ...r, originalIndex: idx })).reverse();
-
-            if (filterVal !== '全部') {
-                displayRecords = displayRecords.filter(r => r.status === filterVal);
-            }
-
-            if(displayRecords.length === 0) { 
-                list.innerHTML = '<p style="text-align:center; color:var(--text-sub); margin-top:30px;">目前沒有符合的紀錄！</p>'; 
-                return; 
-            }
+            if (filterVal !== '全部') displayRecords = displayRecords.filter(r => r.status === filterVal);
+            if (query !== '') displayRecords = displayRecords.filter(r => `${r.camera} ${r.film} ${r.notes} ${r.status} ${r.lab}`.toLowerCase().includes(query));
+            if(displayRecords.length === 0) { list.innerHTML = '<p style="text-align:center; color:var(--text-sub); margin-top:30px;">目前沒有符合的紀錄！</p>'; return; }
 
             displayRecords.forEach((record) => {
                 const realIndex = record.originalIndex; 
-                let badgeClass = 'status-shooting';
-                if(record.status === '已退片') badgeClass = 'status-unloaded';
-                if(record.status === '送洗中') badgeClass = 'status-lab';
-                if(record.status === '已完成') badgeClass = 'status-done';
-
-                let quickBtnHtml = '';
-                if(record.status === '拍攝中') quickBtnHtml = `<button class="btn-quick-action" onclick="quickAction(${realIndex}, 'unload')">👉 一鍵退片</button>`;
-                else if(record.status === '已退片') quickBtnHtml = `<button class="btn-quick-action" onclick="quickAction(${realIndex}, 'lab')">🧪 一鍵送洗</button>`;
-                else if(record.status === '送洗中') quickBtnHtml = `<button class="btn-quick-action" onclick="quickAction(${realIndex}, 'done')">✅ 歸檔圖檔</button>`;
-
-                const totalCost = (parseInt(record.filmCost) || 0) + (parseInt(record.labCost) || 0);
-                const costHtml = totalCost > 0 ? `<span class="record-cost">$${totalCost}</span>` : '';
+                let badgeClass = record.status === '已退片' ? 'status-unloaded' : record.status === '送洗中' ? 'status-lab' : record.status === '已完成' ? 'status-done' : 'status-shooting';
+                let quickBtnHtml = record.status === '拍攝中' ? `<button class="btn-quick-action" onclick="triggerSmartAction(${realIndex}, 'unload')">👉 一鍵退片</button>` : record.status === '已退片' ? `<button class="btn-quick-action" onclick="triggerSmartAction(${realIndex}, 'lab')">🧪 一鍵送洗</button>` : record.status === '送洗中' ? `<button class="btn-quick-action" onclick="triggerSmartAction(${realIndex}, 'done')">✅ 歸檔圖檔</button>` : '';
+                const totalCost = (parseInt(record.filmCost) || 0) + (parseInt(record.labCost) || 0), costHtml = totalCost > 0 ? `<span class="record-cost">$${totalCost}</span>` : '';
                 const driveBtn = record.driveLink ? `<button class="btn-link" onclick="window.open('${record.driveLink}', '_blank')">🔗 看圖</button>` : '';
+                let pushWarning = ((record.status === '已退片' || record.status === '送洗中') && record.iso && record.iso !== '正常') ? `<span class="status-badge push-badge">⚠️ 注意: ${record.iso}</span>` : '';
+                let dateHtml = `<strong>📅 上片：</strong>${record.loadDate || '未記錄'}`; if (record.unloadDate) dateHtml += `<br><strong>🎞️ 退片：</strong>${record.unloadDate}`; if (record.labDate) dateHtml += `<br><strong>🧪 送洗：</strong>${record.labDate} (${record.lab || '未指定店家'})`;
+                let formattedNotes = (record.notes || '無').replace(/(#[^\s]+)/g, '<span style="color:var(--accent); font-weight:600;">$1</span>');
 
-                let dateHtml = `<strong>📅 上片：</strong>${record.loadDate || '未記錄'}`;
-                if (record.unloadDate) dateHtml += `<br><strong>🎞️ 退片：</strong>${record.unloadDate}`;
-                if (record.labDate) dateHtml += `<br><strong>🧪 送洗：</strong>${record.labDate} (${record.lab || '未指定店家'})`;
-
-                const div = document.createElement('div');
-                div.className = 'record-item';
-                div.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <h4>${record.camera}<br><span style="font-size:14px; font-weight:600; color:var(--text-sub);">${record.film}</span></h4>
-                        <span class="status-badge ${badgeClass}">${record.status}</span>
-                    </div>
-                    <div class="inner-box">
-                        <p style="margin:0;"><strong>設定：</strong>${record.lens || '未記錄'} / ${record.lighting} / ${record.iso}</p>
-                        <p style="margin:6px 0 0 0; line-height: 1.6;">${dateHtml}</p>
-                    </div>
-                    <p style="display:flex; justify-content:space-between; margin-top:12px;"><span><strong>備註：</strong>${record.notes || '無'}</span> ${costHtml}</p>
-                    ${quickBtnHtml}
-                    <div class="action-buttons">
-                        <button class="btn-edit" onclick="editRecord(${realIndex})">編輯</button>
-                        <button class="btn-share" onclick="shareToNotes(${realIndex})">分享</button>
-                        ${driveBtn}
-                        <button class="btn-delete" onclick="deleteRecord(${realIndex})">刪除</button>
-                    </div>
-                `;
+                const div = document.createElement('div'); div.className = 'record-item';
+                div.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:flex-start;"><h4>${record.camera}<br><span style="font-size:14px; font-weight:600; color:var(--text-sub);">${record.film}</span></h4><div style="text-align:right;">${pushWarning}<span class="status-badge ${badgeClass}" style="margin-bottom:0;">${record.status}</span></div></div>
+                    <div class="inner-box"><p style="margin:0;"><strong>設定：</strong>${record.lens || '未記錄'} / ${record.lighting} / ${record.iso}</p><p style="margin:6px 0 0 0; line-height: 1.6;">${dateHtml}</p></div>
+                    <p style="display:flex; justify-content:space-between; margin-top:12px;"><span><strong>備註：</strong>${formattedNotes}</span> ${costHtml}</p>${quickBtnHtml}
+                    <div class="action-buttons"><button class="btn-edit" onclick="openMainForm(${realIndex})">編輯</button><button class="btn-share" onclick="shareToNotes(${realIndex})">分享</button>${driveBtn}<button class="btn-delete" onclick="deleteRecord(${realIndex})">刪除</button></div>`;
                 list.appendChild(div);
             });
         }
 
-        function saveRecord() {
-            const record = {
-                status: document.getElementById('status').value, camera: document.getElementById('camera').value,
-                film: document.getElementById('film').value, format: document.getElementById('format').value,
-                iso: document.getElementById('iso').value, lens: document.getElementById('lens').value,
-                lighting: document.getElementById('lighting').value, loadDate: document.getElementById('loadDate').value,
-                unloadDate: document.getElementById('unloadDate').value, labDate: document.getElementById('labDate').value,
-                lab: document.getElementById('lab').value, filmCost: document.getElementById('filmCost').value,
-                labCost: document.getElementById('labCost').value, driveLink: document.getElementById('driveLink').value,
-                notes: document.getElementById('notes').value
-            };
-            if (editingIndex === -1) filmRecords.push(record); else filmRecords[editingIndex] = record;
-            safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords));
-            cancelEdit(); renderRecords(); renderStats(); 
-        }
+        /* ================= 全新戰情儀表板 ================= */
+        function renderStats() {
+            const statsArea = document.getElementById('statsArea'); 
+            if (filmRecords.length === 0) { statsArea.innerHTML = '<p style="text-align:center; color:var(--text-sub); font-size:14px;">尚無紀錄資料</p>'; return; }
 
-        function editRecord(index) {
-            editingIndex = index; const r = filmRecords[index];
-            document.getElementById('status').value = r.status; 
-            document.getElementById('camera').value = r.camera;
-            document.getElementById('film').value = r.film; 
-            document.getElementById('format').value = r.format;
-            document.getElementById('iso').value = r.iso; 
-            
-            const lensSelect = document.getElementById('lens');
-            if (r.lens && ![...defaultLenses, ...customLenses].includes(r.lens)) {
-                const opt = document.createElement('option'); opt.value = r.lens; opt.textContent = r.lens;
-                lensSelect.appendChild(opt);
-            }
-            lensSelect.value = r.lens || '未記錄';
-            
-            const labSelect = document.getElementById('lab');
-            if (r.lab && ![...defaultLabs, ...customLabs].includes(r.lab) && r.lab !== "其他店家") {
-                const opt = document.createElement('option'); opt.value = r.lab; opt.textContent = r.lab;
-                labSelect.appendChild(opt);
-            }
-            labSelect.value = r.lab || '未指定';
-            
-            document.getElementById('lighting').value = r.lighting || '自然光為主'; 
-            
-            // 載入日期或「不可考」狀態
-            applyDateVal('loadDate', r.loadDate);
-            applyDateVal('unloadDate', r.unloadDate);
-            applyDateVal('labDate', r.labDate);
+            let totalCost = 0, loadedCount = 0, labCount = 0;
+            let camCounts = {}, filmCounts = {};
 
-            document.getElementById('filmCost').value = r.filmCost || ''; document.getElementById('labCost').value = r.labCost || ''; 
-            document.getElementById('driveLink').value = r.driveLink || ''; document.getElementById('notes').value = r.notes || '';
-
-            toggleDynamicFields();
-            document.getElementById('formCard').classList.add('edit-mode');
-            document.getElementById('saveBtn').textContent = '💾 儲存更新';
-            document.getElementById('saveBtn').classList.add('update-btn');
-            document.getElementById('cancelBtn').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function cancelEdit() {
-            editingIndex = -1;
-            document.getElementById('status').value = '拍攝中'; 
-            
-            applyDateVal('loadDate', ''); document.getElementById('loadDate').valueAsDate = new Date();
-            applyDateVal('unloadDate', '');
-            applyDateVal('labDate', '');
-            
-            document.getElementById('lens').value = '未記錄'; document.getElementById('lab').value = '未指定';
-            ['filmCost','labCost','driveLink','notes'].forEach(id => document.getElementById(id).value = '');
-            toggleDynamicFields();
-            document.getElementById('formCard').classList.remove('edit-mode');
-            document.getElementById('saveBtn').textContent = '新增紀錄';
-            document.getElementById('saveBtn').classList.remove('update-btn');
-            document.getElementById('cancelBtn').style.display = 'none';
-        }
-
-        function deleteRecord(index) {
-            if(confirm('確定刪除此紀錄？')) { 
-                filmRecords.splice(index, 1); 
-                safeSetStorage('filmTrackerRecords', JSON.stringify(filmRecords)); 
-                renderRecords(); renderStats(); 
-            }
-        }
-
-        function exportToCSV() {
-            if(filmRecords.length === 0) { alert("沒有紀錄可匯出！"); return; }
-            let csvContent = "data:text/csv;charset=utf-8,\uFEFF狀態,相機,片幅,底片,鏡頭,光源,感光度,上片日,退片日,送洗日,沖洗店家,底片成本,沖洗費,總成本,雲端連結,備註\n";
             filmRecords.forEach(r => {
-                const tCost = (parseInt(r.filmCost)||0) + (parseInt(r.labCost)||0);
-                csvContent += `${r.status},${r.camera},${r.format},${r.film},${r.lens||''},${r.lighting||''},${r.iso},${r.loadDate},${r.unloadDate||''},${r.labDate||''},${r.lab||''},${r.filmCost||''},${r.labCost||''},${tCost},${r.driveLink||''},${r.notes||''}\n`;
+                totalCost += (parseInt(r.filmCost)||0) + (parseInt(r.labCost)||0);
+                if (r.status === '拍攝中') loadedCount++;
+                if (r.status === '送洗中') labCount++;
+                if (r.camera) camCounts[r.camera] = (camCounts[r.camera] || 0) + 1;
+                if (r.film) filmCounts[r.film] = (filmCounts[r.film] || 0) + 1;
             });
-            const link = document.createElement("a"); link.setAttribute("href", encodeURI(csvContent)); link.setAttribute("download", "Film_Assets.csv");
-            document.body.appendChild(link); link.click(); document.body.removeChild(link);
-        }
 
-        // 匯出完整 JSON 備份
-        function exportBackup() {
-            if(filmRecords.length === 0 && inventory.length === 0 && customCameras.length === 0 && customFilms.length === 0) { 
-                alert("目前沒有任何資料可匯出！"); 
-                return; 
-            }
-            const backupData = {
-                filmTrackerRecords: filmRecords,
-                filmInventory: inventory,
-                customCameras: customCameras,
-                customFilms: customFilms,
-                customLenses: customLenses,
-                customLabs: customLabs
-            };
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData));
-            const link = document.createElement("a"); 
-            link.setAttribute("href", dataStr); 
-            const date = new Date().toISOString().split('T')[0];
-            link.setAttribute("download", `FilmAsset_Backup_${date}.json`);
-            document.body.appendChild(link); link.click(); document.body.removeChild(link);
-        }
+            const topCams = Object.entries(camCounts).sort((a,b)=>b[1]-a[1]).slice(0, 3);
+            const topFilms = Object.entries(filmCounts).sort((a,b)=>b[1]-a[1]).slice(0, 3);
 
-        // 匯入完整 JSON 備份
-        function importBackupFile(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            if (!confirm("⚠️ 警告：匯入備份將會「完全覆蓋」這台設備上的現有資料！確定要繼續嗎？")) {
-                event.target.value = ''; // 取消選擇
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const data = JSON.parse(e.target.result);
-                    // 覆蓋本地資料
-                    if (data.filmTrackerRecords) safeSetStorage('filmTrackerRecords', JSON.stringify(data.filmTrackerRecords));
-                    if (data.filmInventory) safeSetStorage('filmInventory', JSON.stringify(data.filmInventory));
-                    if (data.customCameras) safeSetStorage('customCameras', JSON.stringify(data.customCameras));
-                    if (data.customFilms) safeSetStorage('customFilms', JSON.stringify(data.customFilms));
-                    if (data.customLenses) safeSetStorage('customLenses', JSON.stringify(data.customLenses));
-                    if (data.customLabs) safeSetStorage('customLabs', JSON.stringify(data.customLabs));
+            statsArea.innerHTML = `
+                <div class="dashboard-grid">
+                    <div class="dash-card full-width" style="align-items: center; border-left: 4px solid var(--accent);">
+                        <h4>🔥 總燃燒金額</h4>
+                        <p class="value accent">NT$ ${totalCost.toLocaleString()}</p>
+                        <span style="font-size:13px; color:var(--text-sub); margin-top:4px;">累計消耗 ${filmRecords.length} 卷</span>
+                    </div>
                     
-                    alert("✅ 資料匯入成功！即將重新載入頁面。");
-                    location.reload();
-                } catch (error) {
-                    alert("❌ 檔案格式錯誤，請確保上傳的是正確的 JSON 備份檔！");
-                }
-            };
-            reader.readAsText(file);
+                    <div class="dash-card">
+                        <h4>📷 拍攝中</h4>
+                        <p class="value">${loadedCount}</p>
+                    </div>
+                    
+                    <div class="dash-card">
+                        <h4>🧪 送洗中</h4>
+                        <p class="value">${labCount}</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid" style="grid-template-columns: 1fr;">
+                    <div class="dash-card" style="align-items: flex-start;">
+                        <h4>🏆 主力相機 Top 3</h4>
+                        <div class="dash-list" style="width: 100%;">
+                            ${topCams.map((c, i) => `<div class="list-row"><span>${i+1}. ${c[0]}</span><strong>${c[1]} 卷</strong></div>`).join('') || '<div class="list-row">無資料</div>'}
+                        </div>
+                    </div>
+                    
+                    <div class="dash-card" style="align-items: flex-start;">
+                        <h4>🎞️ 主力底片 Top 3</h4>
+                        <div class="dash-list" style="width: 100%;">
+                            ${topFilms.map((f, i) => `<div class="list-row"><span>${i+1}. ${f[0]}</span><strong>${f[1]} 卷</strong></div>`).join('') || '<div class="list-row">無資料</div>'}
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initApp);
-        } else {
-            initApp();
+        /* 分享與匯出 */
+        function shareToNotes(i) { const r = filmRecords[i], txt = `🎞️ 底片紀錄\n相機：${r.camera}\n底片：${r.film}\n狀態：${r.status}\n上片：${r.loadDate}`; if (navigator.share) navigator.share({ text: txt }).catch(e=>console.log); else alert("請複製:\n" + txt); }
+        function exportToCSV() { if(filmRecords.length===0) return alert("無資料"); let csv = "\uFEFF狀態,相機,片幅,底片,鏡頭,感光度,上片日,送洗日,店家,總成本,備註\n" + filmRecords.map(r => `${r.status},${r.camera},${r.format},${r.film},${r.lens||''},${r.iso},${r.loadDate},${r.labDate||''},${r.lab||''},${(parseInt(r.filmCost)||0)+(parseInt(r.labCost)||0)},${r.notes||''}`).join('\n'); const l = document.createElement("a"); l.href = "data:text/csv;charset=utf-8," + encodeURI(csv); l.download = "Film.csv"; document.body.appendChild(l); l.click(); l.remove(); }
+        function exportBackup() { const d = { filmTrackerRecords: filmRecords, filmInventory: inventory, customCameras, customFilms, customLenses, customLabs }, l = document.createElement("a"); l.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(d)); l.download = `Backup_${new Date().toISOString().split('T')[0]}.json`; document.body.appendChild(l); l.click(); l.remove(); }
+        function importBackupFile(e) {
+            const file = e.target.files[0]; if (!file) return; if (!confirm("⚠️ 將完全覆蓋現有資料！確定？")) { e.target.value = ''; return; }
+            const r = new FileReader(); r.onload = function(ev) { try { const d = JSON.parse(ev.target.result); if(d.filmTrackerRecords) safeSetStorage('filmTrackerRecords', JSON.stringify(d.filmTrackerRecords)); if(d.filmInventory) safeSetStorage('filmInventory', JSON.stringify(d.filmInventory)); ['Cameras','Films','Lenses','Labs'].forEach(k => { if(d[`custom${k}`]) safeSetStorage(`custom${k}`, JSON.stringify(d[`custom${k}`])); }); alert("✅ 匯入成功！"); location.reload(); } catch (err) { alert("❌ 格式錯誤"); } }; r.readAsText(file);
         }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initApp); else initApp();
     </script>
 </body>
 </html>
